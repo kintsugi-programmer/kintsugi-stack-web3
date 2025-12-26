@@ -12,6 +12,7 @@
 - [kintsugi-stack-web3](#kintsugi-stack-web3)
   - [Table of Contents](#table-of-contents)
 - [Web 3.0 Roadmap Short Intro.](#web-30-roadmap-short-intro)
+- [Project crypto-cross: A full-stack decentralized application (DApp) for sending Ethereum transactions through the blockchain with a modern React frontend and Solidity smart contracts.](#project-crypto-cross-a-full-stack-decentralized-application-dapp-for-sending-ethereum-transactions-through-the-blockchain-with-a-modern-react-frontend-and-solidity-smart-contracts)
 - [Others](#others)
   - [Prompts](#prompts)
     - [Notes Formatting](#notes-formatting)
@@ -167,6 +168,21 @@
     - > Effective learning involves challenging your capabilities with projects you might find difficult.
     - > Completing **four to five projects** (such as building an NFT marketplace) can make you more proficient than most developers.
     - A **portfolio website** is crucial for showing evidence of expertise and building trust with clients or employers,.
+
+# Project crypto-cross: A full-stack decentralized application (DApp) for sending Ethereum transactions through the blockchain with a modern React frontend and Solidity smart contracts.
+
+- https://github.com/kintsugi-programmer/crypto-cross-web3-ethereum-transfer-dapp-fullstack-suite
+
+![alt text](crypto-cross.png)
+
+This project is a comprehensive Web 3.0 blockchain application that enables users to:
+- Send Ethereum across the blockchain network
+- Attach messages, keywords, and GIFs to transactions
+- View transaction history permanently stored on-chain
+- Connect via MetaMask wallet
+- Experience a modern, responsive UI built with React and Tailwind CSS
+
+**Live Demo:** [cryptocross.vercel.app](https://cryptocross.vercel.app)
 
 # Others
 
