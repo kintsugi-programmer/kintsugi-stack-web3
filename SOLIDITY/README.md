@@ -423,21 +423,44 @@ npm -v
 1. Open VS Code
 2. Go to Extensions (square icon on left)
 3. Search: **Solidity**
-4. Install the extension by **Juan Blanco**
+4. Install the extension by **Juan Blanco** or [**HardHat Official**](https://marketplace.visualstudio.com/items?itemName=NomicFoundation.hardhat-solidity)
 
 ---
 
 ### Step 2 — Create Project Folder
 
 ```bash
-mkdir my-solidity-project
-cd my-solidity-project
+mkdir 2_my_solidity_project
+cd 2_my_solidity_project
 ```
 
 Initialize npm:
 
 ```bash
 npm init -y
+```
+
+```bash
+bali-king@war-machine:~/BaliGit/kintsugi-stack-web3/SOLIDITY/2_my_solidity_project$ npm init -y
+Wrote to /home/bali-king/BaliGit/kintsugi-stack-web3/SOLIDITY/2_my_solidity_project/package.json:
+
+{
+  "name": "2_my_solidity_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
+
+
+
+bali-king@war-machine:~/BaliGit/kintsugi-stack-web3/SOLIDITY/2_my_solidity_project$ 
 ```
 
 ---
@@ -451,7 +474,7 @@ npm install --save-dev hardhat
 Create Hardhat project:
 
 ```bash
-npx hardhat
+npx hardhat --init
 ```
 
 Choose:
@@ -459,6 +482,43 @@ Choose:
 1. **Create a JavaScript project**
 2. Press **Enter** for default location
 3. Type **y** to install recommended packages
+
+![alt text](image-11.png)
+
+> for packages install errors: use `--legacy-peer-deps`
+```bash
+npm error Fix the upstream dependency conflict, or retry
+npm error this command with --force or --legacy-peer-deps
+npm error to accept an incorrect (and potentially broken) dependency resolution.
+```
+
+![alt text](image-12.png)
+
+> or Downgrade Hardhat to v2 (recommended)
+```bash
+npm remove hardhat
+npm install --save-dev hardhat@^2.28.0
+rm -rf node_modules package-lock.json
+npm install
+npm install --save-dev \
+  @nomicfoundation/hardhat-chai-matchers@^2.0.0 \
+  @nomicfoundation/hardhat-ethers@^3.1.3 \
+  @nomicfoundation/hardhat-ignition@^0.15.0 \
+  @nomicfoundation/hardhat-ignition-ethers@^0.15.0 \
+  @nomicfoundation/hardhat-network-helpers@^1.0.0 \
+  @nomicfoundation/hardhat-toolbox@^6.0.0 \
+  @nomicfoundation/hardhat-verify@^2.0.0 \
+  @typechain/ethers-v6@^0.5.0 \
+  @typechain/hardhat@^9.0.0 \
+  chai@^4.2.0 \
+  ethers@^6.4.0 \
+  hardhat-gas-reporter@^2.3.0 \
+  solidity-coverage@^0.8.0 \
+  typechain@^8.3.0
+
+```
+
+![alt text](image-13.png)
 
 ---
 
@@ -543,6 +603,8 @@ You should see:
 ```
 Contract deployed at: 0x....
 ```
+
+![alt text](image-14.png)
 
 ## General .gitignore for Solidity projects (works for Hardhat, Truffle, Foundry, Remix-downloaded projects, etc.)
 
