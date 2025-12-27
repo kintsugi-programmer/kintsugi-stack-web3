@@ -397,7 +397,11 @@ contract Hello {
 6. Contract appears at bottom
 7. Click variable name to see value
 
-![alt text](image-9.png)
+- Remix IDE: Hello World !!!
+  - Online
+    - ![alt text](image-9.png)
+  - Offline
+    - ![alt text](image-10.png)
 
 ## Getting Started with Solidity in VS Code + HardHat
 
@@ -543,52 +547,72 @@ Contract deployed at: 0x....
 ## General .gitignore for Solidity projects (works for Hardhat, Truffle, Foundry, Remix-downloaded projects, etc.)
 
 ```gitignore
-# Node modules
+##############################
+# UNIVERSAL SOLIDITY GITIGNORE
+##############################
+
+# ─── Node / Package Managers ────────────────────────────────
 node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
 
-# Environment variables
+# ─── Environment Files (PRIVATE KEYS, RPC URL etc.) ─────────
 .env
-.env.local
 .env.*
+!.env.example
 
-# Hardhat artifacts and cache
+# ─── Hardhat ────────────────────────────────────────────────
 artifacts/
 cache/
+coverage/
+coverage.json
 typechain/
 typechain-types/
 
-# Truffle build
-build/
-
-# Foundry
+# ─── Foundry ────────────────────────────────────────────────
 out/
 cache/
 
-# Coverage reports
-coverage/
-coverage.json
+# ─── Truffle ────────────────────────────────────────────────
+build/
 
-# Logs
+# ─── Remix IDE ──────────────────────────────────────────────
+.states/
+
+# ─── Generated ABIs / Interfaces ────────────────────────────
+*.abi
+*.abi.json
+
+# ─── TypeScript build info ──────────────────────────────────
+*.tsbuildinfo
+
+# ─── Dist / Production Bundles ──────────────────────────────
+dist/
+out-build/
+bin/
+
+# ─── Logs ───────────────────────────────────────────────────
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# OS / editor junk
+# ─── OS / Editor Junk ───────────────────────────────────────
 .DS_Store
 Thumbs.db
+*.swp
 .idea/
 .vscode/
-*.swp
+*.iml
 
-# Compiled JSON ABIs
-*.abi
-*.abi.json
+# ─── Python virtualenvs (if scripts used) ───────────────────
+.venv/
+venv/
 
-# Generated typings
-*.tsbuildinfo
-
-# Dist / bundles
-dist/
+# ─── Misc ───────────────────────────────────────────────────
+tmp/
+temp/
 ```
 
 ## Variables in Solidity
