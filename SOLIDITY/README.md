@@ -364,6 +364,8 @@
 
 ## Hello World: Getting Started with Remix IDE
 
+- [1_Hello_World.sol](Solidity_Contracts/contracts/1_Hello_World.sol)
+
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.0;
@@ -671,6 +673,7 @@ build/
 
 # ─── Remix IDE ──────────────────────────────────────────────
 .states/
+.deps/
 
 # ─── Generated ABIs / Interfaces ────────────────────────────
 *.abi
@@ -708,6 +711,8 @@ temp/
 ```
 
 ## Variables in Solidity
+
+- [2_Variables.sol](Solidity_Contracts/contracts/2_Variables.sol)
 
 ```solidity
 // SPDX-License-Identifier: MIT

@@ -30,6 +30,7 @@ build/
 
 # ─── Remix IDE ──────────────────────────────────────────────
 .states/
+.deps/
 
 # ─── Generated ABIs / Interfaces ────────────────────────────
 *.abi
