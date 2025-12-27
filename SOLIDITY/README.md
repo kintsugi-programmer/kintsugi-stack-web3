@@ -37,12 +37,23 @@
   - [Web2 vs Web3](#web2-vs-web3)
     - [Web2 (Traditional)](#web2-traditional)
     - [Web3 (Blockchain)](#web3-blockchain)
-  - [Getting Started with Remix IDE](#getting-started-with-remix-ide)
+  - [Hello World: Getting Started with Remix IDE](#hello-world-getting-started-with-remix-ide)
     - [Setup](#setup)
     - [Creating Your First Contract](#creating-your-first-contract)
       - [File Creation](#file-creation)
       - [Basic Contract Structure](#basic-contract-structure)
     - [Deploying Your First Contract](#deploying-your-first-contract)
+  - [Getting Started with Solidity in VS Code + HardHat](#getting-started-with-solidity-in-vs-code--hardhat)
+    - [Prerequisites](#prerequisites)
+    - [Step 1 — Install Solidity Extension in VS Code](#step-1--install-solidity-extension-in-vs-code)
+    - [Step 2 — Create Project Folder](#step-2--create-project-folder)
+    - [Step 3 — Install Hardhat](#step-3--install-hardhat)
+    - [Step 4 — Install Hardhat Toolbox](#step-4--install-hardhat-toolbox)
+    - [Step 5 — Create Sample Solidity Contract](#step-5--create-sample-solidity-contract)
+    - [Step 6 — Compile Contract](#step-6--compile-contract)
+    - [Step 7 — Start Local Blockchain](#step-7--start-local-blockchain)
+    - [Step 8 — Deploy Sample Contract](#step-8--deploy-sample-contract)
+  - [General .gitignore for Solidity projects (works for Hardhat, Truffle, Foundry, Remix-downloaded projects, etc.)](#general-gitignore-for-solidity-projects-works-for-hardhat-truffle-foundry-remix-downloaded-projects-etc)
   - [Variables in Solidity](#variables-in-solidity)
     - [What Are Variables?](#what-are-variables)
     - [Variable Types](#variable-types)
@@ -59,7 +70,7 @@
       - [Get Function](#get-function)
     - [Testing the Calculator](#testing-the-calculator)
   - [Deploying to Blockchain](#deploying-to-blockchain)
-    - [Prerequisites](#prerequisites)
+    - [Prerequisites](#prerequisites-1)
       - [Install MetaMask](#install-metamask)
       - [Setup Test Network](#setup-test-network)
       - [Get Test Coins](#get-test-coins)
@@ -343,12 +354,12 @@
 - You control your own data
   - ![alt text](image-8.png)
 
-## Getting Started with Remix IDE
+## Hello World: Getting Started with Remix IDE
 
 ### Setup
 1. Go to Google and search "Remix IDE"
-2. Click on remix.ethereum.org
-3. Create new workspace (click + button)
+2. Click on [remix.ethereum.org](https://remix.ethereum.org)
+3. Create new workspace (click + button) or download for linux
 4. Name it: "Solidity Learning" or any name
 5. Three folders appear: contract, script, test
 
@@ -385,6 +396,200 @@ contract Hello {
 5. Click "Deploy" button
 6. Contract appears at bottom
 7. Click variable name to see value
+
+![alt text](image-9.png)
+
+## Getting Started with Solidity in VS Code + HardHat
+
+### Prerequisites
+- Visual Studio Code installed
+- Node.js LTS installed
+
+Check versions:
+
+```bash
+node -v
+npm -v
+```
+
+---
+
+### Step 1 — Install Solidity Extension in VS Code
+
+1. Open VS Code
+2. Go to Extensions (square icon on left)
+3. Search: **Solidity**
+4. Install the extension by **Juan Blanco**
+
+---
+
+### Step 2 — Create Project Folder
+
+```bash
+mkdir my-solidity-project
+cd my-solidity-project
+```
+
+Initialize npm:
+
+```bash
+npm init -y
+```
+
+---
+
+### Step 3 — Install Hardhat
+
+```bash
+npm install --save-dev hardhat
+```
+
+Create Hardhat project:
+
+```bash
+npx hardhat
+```
+
+Choose:
+
+1. **Create a JavaScript project**
+2. Press **Enter** for default location
+3. Type **y** to install recommended packages
+
+---
+
+### Step 4 — Install Hardhat Toolbox
+
+```bash
+npm install --save-dev @nomicfoundation/hardhat-toolbox
+```
+
+---
+
+### Step 5 — Create Sample Solidity Contract
+
+Create file:
+
+`contracts/Hello.sol`
+
+Paste:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract HelloWorld {
+    string public message = "Hello Blockchain!";
+
+    function setMessage(string memory _msg) public {
+        message = _msg;
+    }
+}
+```
+
+---
+
+### Step 6 — Compile Contract
+
+```bash
+npx hardhat compile
+```
+
+Expected output: **Compilation successful**
+
+---
+
+### Step 7 — Start Local Blockchain
+
+```bash
+npx hardhat node
+```
+
+Keep this terminal open
+
+---
+
+### Step 8 — Deploy Sample Contract
+
+Create file:
+
+`scripts/deploy.js`
+
+```javascript
+const hre = require("hardhat");
+
+async function main() {
+  const HelloWorld = await hre.ethers.deployContract("HelloWorld");
+  const contract = await HelloWorld.waitForDeployment();
+
+  console.log("Contract deployed at:", contract.target);
+}
+
+main();
+```
+
+Run deployment:
+
+```bash
+npx hardhat run scripts/deploy.js --network localhost
+```
+
+You should see:
+
+```
+Contract deployed at: 0x....
+```
+
+## General .gitignore for Solidity projects (works for Hardhat, Truffle, Foundry, Remix-downloaded projects, etc.)
+
+```gitignore
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.*
+
+# Hardhat artifacts and cache
+artifacts/
+cache/
+typechain/
+typechain-types/
+
+# Truffle build
+build/
+
+# Foundry
+out/
+cache/
+
+# Coverage reports
+coverage/
+coverage.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Compiled JSON ABIs
+*.abi
+*.abi.json
+
+# Generated typings
+*.tsbuildinfo
+
+# Dist / bundles
+dist/
+```
 
 ## Variables in Solidity
 
