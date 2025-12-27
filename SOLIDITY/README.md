@@ -356,6 +356,14 @@
 
 ## Hello World: Getting Started with Remix IDE
 
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.0;
+contract hello_world {
+    string public welcome ="Hello World !!!";
+}
+```
+
 - Offline IDE
   - Includes all stuff to get hands ready to get dirty
   - Hardhat, scripts etc.
@@ -409,6 +417,15 @@ contract Hello {
     - ![alt text](image-10.png)
 
 ## Getting Started with Solidity in VS Code
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.28;
+contract hello_world {
+    string public welcome ="Hello World !!!";
+}
+
+```
 
 ### Prerequisites
 - Visual Studio Code installed
@@ -684,6 +701,23 @@ temp/
 
 ## Variables in Solidity
 
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.30;
+
+contract Variables {
+    address public add1 = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4 ;
+    string public name = "Bali";
+    bool public isActive = true;
+    uint8 public maxSupply = 255;
+    // uint8 public maxSupply = 256; // throws error
+    uint16 public count = 65000;
+    uint128 public largeNum = 1234567654321234567654321;
+    uint256 public veryLargeNum = 12345678909876543222221234567890294378543750348507890298985790238999;
+    uint256 public timeWaited = 1 days; // 1 day = 86400 (seconds) 
+}
+```
+
 ### What Are Variables?
 - Store data in your program
 - Different types for different data
@@ -699,7 +733,7 @@ address public owner;
 
 #### 2. String
 ```solidity
-string public name = "Nas";
+string public name = "Bali";
 ```
 - Represents text
 - Must use quotes
@@ -731,6 +765,8 @@ uint256 public veryLargeNum;           // Extremely large number
 ```solidity
 uint256 public waitTime = 1 days; // Represents 86400 (seconds in one day)
 ```
+
+- ![alt text](image-16.png)
 
 ## Building a Calculator Contract
 
