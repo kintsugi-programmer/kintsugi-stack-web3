@@ -14,9 +14,6 @@
 - [kintsugi-stack-web3: ROADMAP](#kintsugi-stack-web3-roadmap)
   - [Table of Contents](#table-of-contents)
 - [Web 3.0 Roadmap Short Intro.](#web-30-roadmap-short-intro)
-- [Others](#others)
-  - [Prompts](#prompts)
-    - [Notes Formatting](#notes-formatting)
 
 ---
 
@@ -168,16 +165,6 @@
     - > Effective learning involves challenging your capabilities with projects you might find difficult.
     - > Completing **four to five projects** (such as building an NFT marketplace) can make you more proficient than most developers.
     - A **portfolio website** is crucial for showing evidence of expertise and building trust with clients or employers,.
-
-# Others
-
-## Prompts
-
-### Notes Formatting
-```
-Create super depth notes in Markdown (.md) format with 100% information preserved, no loss. Use simple grammar and keep everything clear, direct, and well-structured. using headings, subheadings,paragraphs, statements and code blocks when needed. Include every detail, definition, example, and step exactly from the source. transform the given content into clean, readable .md format.
-and no #, just nested - lines plaintext, add bold wherever necessary
-```
 
 ---
 End-of-File
