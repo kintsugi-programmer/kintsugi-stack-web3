@@ -22,7 +22,6 @@
 ## Table of Contents
 - [kintsugi-stack-web3: SOLIDITY](#kintsugi-stack-web3-solidity)
   - [Table of Contents](#table-of-contents)
-  - [Content Structure](#content-structure)
   - [What is Solidity?](#what-is-solidity)
     - [Definition](#definition)
     - [What You Can Build](#what-you-can-build)
@@ -258,10 +257,7 @@
     - [Best Practices](#best-practices)
   - [Milestone !!!](#milestone-)
 
-
-## Content Structure
-- **Goal**: Take you from zero to kickstarting career as a Solidity developer
-
+---
 
 ## What is Solidity?
 
@@ -277,11 +273,13 @@
 - Like Facebook but decentralized
 - Data spread across different nodes worldwide
 - Not connected to one server
+  - ![alt text](image-1.png)
 
 #### 2. Decentralized Social Media
 - Example: Orb
 - You own your data
 - Decentralized platform
+  - ![alt text](image-2.png)
 
 #### 3. DAOs (Decentralized Autonomous Organizations)
 - No top-level CEOs/co-founders
@@ -291,6 +289,7 @@
   - Other holders vote
   - If approved, proposal becomes a contract
   - Organization executes the proposal
+    - ![alt text](image-3.png)
 
 #### 4. NFTs (Non-Fungible Tokens)
 - Digital assets on blockchain
@@ -299,11 +298,13 @@
   - Access to applications
 - Example: Azuki collection
 - You own your digital assets
+  - ![alt text](image-4.png)
 
 #### 5. Cryptocurrencies
 - Create your own coin (like Ethereum, Bitcoin, Dogecoin)
 - Use in your own platform
 - Provide benefits to holders
+  - ![alt text](image-5.png)
 
 #### 6. Games
 - Build gaming characters on blockchain
@@ -312,11 +313,12 @@
 - Find items in-game and sell them
 - Monetize your gameplay
 - True ownership of in-game assets
+  - ![alt text](image-6.png)
 
 ### Why Blockchain Development?
 
 #### Ownership
-- You own the data
+- **You own the data**
 - You are in control
 - Nobody else has access
 
@@ -330,6 +332,7 @@
 - User → Application (Facebook) → Server/Database
 - Data stored on centralized servers
 - Company controls your data
+  - ![alt text](image-7.png)
 
 ### Web3 (Blockchain)
 - User → Sign in with crypto wallet
@@ -338,6 +341,7 @@
 - Data saved on blockchain
 - Distributed across different servers worldwide
 - You control your own data
+  - ![alt text](image-8.png)
 
 ## Getting Started with Remix IDE
 
@@ -367,8 +371,8 @@ contract Hello {
 ```
 
 **Components:**
-- **SPDX License**: Specifies who can use the code (MIT = open source)
-- **Pragma**: Specifies compiler version
+- **SPDX(Software Package Data Exchange) License**: Specifies who can use the code (MIT = open source)
+- **Pragma**: Specifies compiler version, which compiler is gonna convert .sol → executables
 - **Contract**: Keyword to create a contract
 - **Variable**: `string public welcome` - public variable anyone can see
 
