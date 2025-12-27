@@ -22,6 +22,7 @@
 ## Table of Contents
 - [kintsugi-stack-web3: SOLIDITY](#kintsugi-stack-web3-solidity)
   - [Table of Contents](#table-of-contents)
+  - [Solidity\_Contracts](#solidity_contracts)
   - [What is Solidity?](#what-is-solidity)
     - [Definition](#definition)
     - [What You Can Build](#what-you-can-build)
@@ -270,6 +271,13 @@
 
 ---
 
+## Solidity_Contracts
+
+- [1_Hello_World](Solidity_Contracts/contracts/1_Hello_World.sol)
+- [2_Variables](Solidity_Contracts/contracts/2_Variables.sol)
+
+---
+
 ## What is Solidity?
 
 ### Definition
@@ -452,8 +460,8 @@ npm -v
 ### Step 2 — Create Project Folder
 
 ```bash
-mkdir 2_my_solidity_project
-cd 2_my_solidity_project
+mkdir vsc_solidity_sample
+cd vsc_solidity_sample
 ```
 
 Initialize npm:
@@ -463,11 +471,11 @@ npm init -y
 ```
 
 ```bash
-bali-king@war-machine:~/BaliGit/kintsugi-stack-web3/SOLIDITY/2_my_solidity_project$ npm init -y
-Wrote to /home/bali-king/BaliGit/kintsugi-stack-web3/SOLIDITY/2_my_solidity_project/package.json:
+bali-king@war-machine:~/BaliGit/kintsugi-stack-web3/SOLIDITY/vsc_solidity_sample$ npm init -y
+Wrote to /home/bali-king/BaliGit/kintsugi-stack-web3/SOLIDITY/vsc_solidity_sample/package.json:
 
 {
-  "name": "2_my_solidity_project",
+  "name": "vsc_solidity_sample",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -482,7 +490,7 @@ Wrote to /home/bali-king/BaliGit/kintsugi-stack-web3/SOLIDITY/2_my_solidity_proj
 
 
 
-bali-king@war-machine:~/BaliGit/kintsugi-stack-web3/SOLIDITY/2_my_solidity_project$ 
+bali-king@war-machine:~/BaliGit/kintsugi-stack-web3/SOLIDITY/vsc_solidity_sample$ 
 ```
 
 ---
