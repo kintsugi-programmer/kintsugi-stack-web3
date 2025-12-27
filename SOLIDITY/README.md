@@ -43,7 +43,7 @@
       - [File Creation](#file-creation)
       - [Basic Contract Structure](#basic-contract-structure)
     - [Deploying Your First Contract](#deploying-your-first-contract)
-  - [Getting Started with Solidity in VS Code + HardHat](#getting-started-with-solidity-in-vs-code--hardhat)
+  - [Getting Started with Solidity in VS Code](#getting-started-with-solidity-in-vs-code)
     - [Prerequisites](#prerequisites)
     - [Step 1 — Install Solidity Extension in VS Code](#step-1--install-solidity-extension-in-vs-code)
     - [Step 2 — Create Project Folder](#step-2--create-project-folder)
@@ -356,6 +356,11 @@
 
 ## Hello World: Getting Started with Remix IDE
 
+- Offline IDE
+  - Includes all stuff to get hands ready to get dirty
+  - Hardhat, scripts etc.
+    - ![alt text](image-15.png)
+
 ### Setup
 1. Go to Google and search "Remix IDE"
 2. Click on [remix.ethereum.org](https://remix.ethereum.org)
@@ -403,7 +408,7 @@ contract Hello {
   - Offline
     - ![alt text](image-10.png)
 
-## Getting Started with Solidity in VS Code + HardHat
+## Getting Started with Solidity in VS Code
 
 ### Prerequisites
 - Visual Studio Code installed
