@@ -22,7 +22,7 @@
 ## Table of Contents
 - [kintsugi-stack-web3: SOLIDITY](#kintsugi-stack-web3-solidity)
   - [Table of Contents](#table-of-contents)
-  - [Solidity\_Contracts](#solidity_contracts)
+  - [Solidity\_Contracts Ledger](#solidity_contracts-ledger)
   - [What is Solidity?](#what-is-solidity)
     - [Definition](#definition)
     - [What You Can Build](#what-you-can-build)
@@ -271,10 +271,10 @@
 
 ---
 
-## Solidity_Contracts
+## Solidity_Contracts Ledger
 
-- [1_Hello_World](Solidity_Contracts/contracts/1_Hello_World.sol)
-- [2_Variables](Solidity_Contracts/contracts/2_Variables.sol)
+- [1_Hello_World.sol](Solidity_Contracts/contracts/1_Hello_World.sol)
+- [2_Variables.sol](Solidity_Contracts/contracts/2_Variables.sol)
 
 ---
 
