@@ -62,13 +62,14 @@
       - [2. String](#2-string)
       - [3. Boolean](#3-boolean)
       - [4. Unsigned Integers (uint)](#4-unsigned-integers-uint)
-  - [Building a Calculator Contract](#building-a-calculator-contract)
+  - [Functions/Building a Calculator Contract](#functionsbuilding-a-calculator-contract)
     - [Requirements](#requirements)
     - [Complete Calculator Code](#complete-calculator-code)
     - [Functions Explained](#functions-explained)
       - [Function Structure](#function-structure)
-      - [Add Function](#add-function)
+      - [Sample Function : Add Function](#sample-function--add-function)
       - [Get Function](#get-function)
+      - [require Function](#require-function)
     - [Testing the Calculator](#testing-the-calculator)
   - [Deploying to Blockchain](#deploying-to-blockchain)
     - [Prerequisites](#prerequisites-1)
@@ -275,6 +276,7 @@
 
 - [1_Hello_World.sol](Solidity_Contracts/contracts/1_Hello_World.sol)
 - [2_Variables.sol](Solidity_Contracts/contracts/2_Variables.sol)
+- [3_Functions_Calculator.sol](Solidity_Contracts/contracts/3_Functions_Calculator.sol)
 
 ---
 
@@ -781,7 +783,28 @@ uint256 public waitTime = 1 days; // Represents 86400 (seconds in one day)
 
 - ![alt text](image-16.png)
 
-## Building a Calculator Contract
+## Functions/Building a Calculator Contract
+
+- [3_Functions_Calculator.sol](Solidity_Contracts/contracts/3_Functions_Calculator.sol)
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.30;
+
+contract Functions_Calculator{
+    uint256 result = 0;
+    function get() public view returns (uint256){ return result ; }
+    function addition(uint256 num) public { result+=num; }
+    function multiply(uint256 num) public { result*=num; }
+    function subtract(uint256 num) public { result-=num; } // will revert if num > result
+    function division(uint256 num) public { require(num!=0,"Division by Zero");result/=num; }
+    function power(uint256 num) public { result=result**num; }
+    //  function power(uint256 num) public { result^=num; }//NO
+    //  function power(uint256 num) public { result**=num; }//NO
+    function mod(uint256 num) public {require(num!=0,"Modulo by Zero");result %=num;}
+    function reset() public { result=0; }
+}
+```
 
 ### Requirements
 1. Create contract called "Calculator"
@@ -834,7 +857,7 @@ function functionName(parameters) visibility returns (returnType) {
 - **returns**: What type of data it returns (optional)
 - **logic**: Code inside curly brackets
 
-#### Add Function
+#### Sample Function : Add Function
 ```solidity
 function add(uint256 num) public {
     result += num;
@@ -855,6 +878,26 @@ function get() public view returns (uint256) {
 - Returns uint256 value
 - Simply returns current result
 
+#### require Function
+
+`require()` is one of Solidity’s **built-in error-handling functions**.
+
+We use it to:
+
+- **validate conditions**
+- **stop execution if the condition is false**
+- **revert state changes**
+- **refund remaining gas to caller**
+
+```solidity
+// Structure
+require(condition, "message if condition is false");
+```
+
+Think of it like:
+
+> “This must be true, otherwise stop and throw an error.”
+
 ### Testing the Calculator
 
 **Deploy Steps:**
@@ -869,6 +912,17 @@ function get() public view returns (uint256) {
 - Multiply 10: Input 10, click "multiply" → result = 50
 - Subtract 10: Input 10, click "subtract" → result = 40
 - Click "get" to see current result
+
+- snapshots
+  - normal stuff
+    - ![alt text](image-17.png)
+  - subtract not lead to negative generally
+    - uint256: Unsigned integers cannot represent negative numbers
+    - or it will revert 
+      - ![alt text](image-19.png)
+  - power: not ^ but `**` & no shorthand allowed
+  - & if we overflow then it will get revert
+    - ![alt text](image-18.png)
 
 ## Deploying to Blockchain
 
@@ -887,6 +941,10 @@ function get() public view returns (uint256) {
 4. Select Sepolia test network
 
 #### Get Test Coins
+- https://www.alchemy.com/faucets/ethereum-sepolia
+- https://cloud.google.com/application/web3/faucet/ethereum/sepolia
+- https://sepolia-faucet.pk910.de/
+
 1. Search "Sepolia faucet"
 2. Go to Alchemy Sepolia faucet
 3. Log in/sign up
@@ -894,6 +952,10 @@ function get() public view returns (uint256) {
 5. Paste address, verify "I'm not a robot"
 6. Click "Send me ETH"
 7. Wait for 0.5 Sepolia ETH (test coins, not real money)
+
+![alt text](image-20.png)
+![alt text](image-21.png)
+![alt text](image-22.png)
 
 ### Deployment Process
 
@@ -909,6 +971,11 @@ function get() public view returns (uint256) {
 9. Click "Confirm"
 10. Click "View on Etherscan" to see on blockchain
 
+- snapshots
+  - ![alt text](image-23.png)
+  - ![alt text](image-24.png)
+  - ![alt text](image-25.png)
+
 ### Interacting with Deployed Contract
 
 **In Remix:**
@@ -923,6 +990,12 @@ function get() public view returns (uint256) {
 - **Writing** (like `add`, `subtract`): Costs gas fees
 - State changes require payment
 - Getting data is free
+
+- snapshots
+  - ![alt text](image-26.png)
+  - ![alt text](image-27.png)
+  - ![alt text](image-28.png)
+  - ![alt text](image-29.png)
 
 ## Visibility Modifiers
 
