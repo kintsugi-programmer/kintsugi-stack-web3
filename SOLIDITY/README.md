@@ -19,10 +19,19 @@
 
 ---
 
+## Solidity_Contracts Ledger
+
+- [1_Hello_World.sol](Solidity_Contracts/contracts/1_Hello_World.sol)
+- [2_Variables.sol](Solidity_Contracts/contracts/2_Variables.sol)
+- [3_Functions_Calculator.sol](Solidity_Contracts/contracts/3_Functions_Calculator.sol)
+- [4_Visibility_Modifiers_Calculator.sol](Solidity_Contracts/contracts/4_Visibility_Modifiers_Calculator.sol)
+
+---
+
 ## Table of Contents
 - [kintsugi-stack-web3: SOLIDITY](#kintsugi-stack-web3-solidity)
-  - [Table of Contents](#table-of-contents)
   - [Solidity\_Contracts Ledger](#solidity_contracts-ledger)
+  - [Table of Contents](#table-of-contents)
   - [What is Solidity?](#what-is-solidity)
     - [Definition](#definition)
     - [What You Can Build](#what-you-can-build)
@@ -46,14 +55,14 @@
     - [Deploying Your First Contract](#deploying-your-first-contract)
   - [Getting Started with Solidity in VS Code](#getting-started-with-solidity-in-vs-code)
     - [Prerequisites](#prerequisites)
-    - [Step 1 — Install Solidity Extension in VS Code](#step-1--install-solidity-extension-in-vs-code)
-    - [Step 2 — Create Project Folder](#step-2--create-project-folder)
-    - [Step 3 — Install Hardhat](#step-3--install-hardhat)
-    - [Step 4 — Install Hardhat Toolbox](#step-4--install-hardhat-toolbox)
-    - [Step 5 — Create Sample Solidity Contract](#step-5--create-sample-solidity-contract)
-    - [Step 6 — Compile Contract](#step-6--compile-contract)
-    - [Step 7 — Start Local Blockchain](#step-7--start-local-blockchain)
-    - [Step 8 — Deploy Sample Contract](#step-8--deploy-sample-contract)
+    - [Step 1: Install Solidity Extension in VS Code](#step-1-install-solidity-extension-in-vs-code)
+    - [Step 2: Create Project Folder](#step-2-create-project-folder)
+    - [Step 3: Install Hardhat](#step-3-install-hardhat)
+    - [Step 4: Install Hardhat Toolbox](#step-4-install-hardhat-toolbox)
+    - [Step 5: Create Sample Solidity Contract](#step-5-create-sample-solidity-contract)
+    - [Step 6: Compile Contract](#step-6-compile-contract)
+    - [Step 7: Start Local Blockchain](#step-7-start-local-blockchain)
+    - [Step 8: Deploy Sample Contract](#step-8-deploy-sample-contract)
   - [General .gitignore for Solidity projects (works for Hardhat, Truffle, Foundry, Remix-downloaded projects, etc.)](#general-gitignore-for-solidity-projects-works-for-hardhat-truffle-foundry-remix-downloaded-projects-etc)
   - [Variables in Solidity](#variables-in-solidity)
     - [What Are Variables?](#what-are-variables)
@@ -272,14 +281,6 @@
 
 ---
 
-## Solidity_Contracts Ledger
-
-- [1_Hello_World.sol](Solidity_Contracts/contracts/1_Hello_World.sol)
-- [2_Variables.sol](Solidity_Contracts/contracts/2_Variables.sol)
-- [3_Functions_Calculator.sol](Solidity_Contracts/contracts/3_Functions_Calculator.sol)
-
----
-
 ## What is Solidity?
 
 ### Definition
@@ -452,7 +453,7 @@ npm -v
 
 ---
 
-### Step 1 — Install Solidity Extension in VS Code
+### Step 1: Install Solidity Extension in VS Code
 
 1. Open VS Code
 2. Go to Extensions (square icon on left)
@@ -461,7 +462,7 @@ npm -v
 
 ---
 
-### Step 2 — Create Project Folder
+### Step 2: Create Project Folder
 
 ```bash
 mkdir vsc_solidity_sample
@@ -499,7 +500,7 @@ bali-king@war-machine:~/BaliGit/kintsugi-stack-web3/SOLIDITY/vsc_solidity_sample
 
 ---
 
-### Step 3 — Install Hardhat
+### Step 3: Install Hardhat
 
 ```bash
 npm install --save-dev hardhat
@@ -556,7 +557,7 @@ npm install --save-dev \
 
 ---
 
-### Step 4 — Install Hardhat Toolbox
+### Step 4: Install Hardhat Toolbox
 
 ```bash
 npm install --save-dev @nomicfoundation/hardhat-toolbox
@@ -564,7 +565,7 @@ npm install --save-dev @nomicfoundation/hardhat-toolbox
 
 ---
 
-### Step 5 — Create Sample Solidity Contract
+### Step 5: Create Sample Solidity Contract
 
 Create file:
 
@@ -587,7 +588,7 @@ contract HelloWorld {
 
 ---
 
-### Step 6 — Compile Contract
+### Step 6: Compile Contract
 
 ```bash
 npx hardhat compile
@@ -597,7 +598,7 @@ Expected output: **Compilation successful**
 
 ---
 
-### Step 7 — Start Local Blockchain
+### Step 7: Start Local Blockchain
 
 ```bash
 npx hardhat node
@@ -607,7 +608,7 @@ Keep this terminal open
 
 ---
 
-### Step 8 — Deploy Sample Contract
+### Step 8: Deploy Sample Contract
 
 Create file:
 
@@ -999,6 +1000,38 @@ Think of it like:
 
 ## Visibility Modifiers
 
+- [4_Visibility_Modifiers_Calculator.sol](Solidity_Contracts/contracts/4_Visibility_Modifiers_Calculator.sol)
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.30;
+contract Calculator_Basic{
+    uint256 result =0;
+    function add(uint256 num) internal {
+        result+=num;
+    }
+    function sub(uint256 num) private  {
+        result-=num;
+    }
+}
+contract Calculator_Advanced is Calculator_Basic{ // inheritance
+    function mul(uint256 num) public {
+        result*=num;
+    }    
+
+    function div(uint256 num) external  {
+        result/=num;
+    }
+
+    function performOperation(uint256 x)public {
+        add(x);// from parent contract // internal, used within contract or by inherit
+        // sub(x);// from parent contract // private, so can't used externally // NO
+        mul(1000);// from this contract
+        // div(10);// external, can't use inside contract, only be used outside the contract // NO
+    }
+}
+```
+
 ### Four Types of Visibility
 
 #### 1. Public
@@ -1007,7 +1040,7 @@ function add(uint256 num) public {
     result += num;
 }
 ```
-- Can be used internally and externally
+- Can be used **internally** and **externally**
 - Anyone can call it
 - Your MetaMask account can use it
 - Other contracts can use it
@@ -1018,7 +1051,7 @@ function internalCalc() private {
     // logic
 }
 ```
-- Only usable within the contract
+- Only usable **within the contract**
 - Not visible externally
 - Cannot be called by users or other contracts
 - Only used by code inside the contract
@@ -1029,8 +1062,8 @@ function helperFunction() internal {
     // logic
 }
 ```
-- Usable within the contract
-- Usable by inheriting contracts
+- Usable **within the contract &**
+- Usable **by inheriting contracts**
 - Not usable externally (not by MetaMask)
 - Child contracts can access it
 
@@ -1061,9 +1094,14 @@ contract AdvancedCalculator is BasicCalculator {
 function add(uint256 num) external {
     result += num;
 }
+
+// example that we can't use above function internally
+function example(uint256 num ) {
+    // add(num); // NO, this will give error
+}
 ```
-- Only accessible from external contracts/accounts
-- Cannot be used internally within the contract
+- Only accessible **from external contracts/accounts**
+- **Cannot be used internally** within the contract
 - More gas efficient than public
 - Use when function is only for external calls
 
@@ -1103,6 +1141,12 @@ contract AdvancedCalculator is BasicCalculator {
     }
 }
 ```
+
+- snapshots
+  - need to deploy each contract
+    - ![alt text](image-30.png)
+  - see the visibility of each func 
+    - ![alt text](image-31.png)
 
 ## Twitter Smart Contract - Basic Version
 
