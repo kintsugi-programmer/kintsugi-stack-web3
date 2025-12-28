@@ -25,6 +25,8 @@
 - [2_Variables.sol](Solidity_Contracts/contracts/2_Variables.sol)
 - [3_Functions_Calculator.sol](Solidity_Contracts/contracts/3_Functions_Calculator.sol)
 - [4_Visibility_Modifiers_Calculator.sol](Solidity_Contracts/contracts/4_Visibility_Modifiers_Calculator.sol)
+- [5_Mapping.sol](Solidity_Contracts/contracts/5_Mapping.sol)
+- [6_Twitter_Basic.sol](Solidity_Contracts/contracts/6_Twitter_Basic.sol)
 
 ---
 
@@ -94,10 +96,12 @@
       - [3. Internal](#3-internal)
       - [4. External](#4-external)
     - [Inheritance Example](#inheritance-example)
-  - [Twitter Smart Contract - Basic Version](#twitter-smart-contract---basic-version)
-    - [Requirements](#requirements-1)
+  - [Mapping](#mapping)
     - [What is a Mapping?](#what-is-a-mapping)
     - [Mapping Syntax](#mapping-syntax)
+    - [Mapping Example](#mapping-example)
+  - [Twitter Smart Contract - Basic Version](#twitter-smart-contract---basic-version)
+    - [Requirements](#requirements-1)
     - [Complete Basic Twitter Contract](#complete-basic-twitter-contract)
     - [Key Concepts](#key-concepts)
       - [msg.sender](#msgsender)
@@ -1148,13 +1152,68 @@ contract AdvancedCalculator is BasicCalculator {
   - see the visibility of each func 
     - ![alt text](image-31.png)
 
-## Twitter Smart Contract - Basic Version
+## Mapping
 
-### Requirements
-1. Create Twitter contract
-2. Create mapping between user and tweet
-3. Create function to create tweet
-4. Create function to get tweet
+- [5_Mapping.sol](Solidity_Contracts/contracts/5_Mapping.sol)
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.30;
+contract Mapping{
+    // Mapping from address to uint
+    // Think of this like a dictionary: myMap[address] = uint
+    mapping(address => uint256) myMap;
+    
+    /**
+    * @notice Stores a value for the caller's address.
+    *
+    * @dev `msg.sender` is the address that invokes this function.
+    * - If a user wallet calls the function, `msg.sender` is that wallet address.
+    * - If another contract calls the function, `msg.sender` is that contract’s address.
+    *
+    * `msg.sender` is automatically provided by the EVM in every transaction
+    * and is commonly used to associate data with the caller.
+    */
+    function createAuto(uint256 value) public {
+        myMap[msg.sender]=value;
+
+    }
+    
+    //msg.sender = the address that called the function
+    //if a user wallet calls → it’s the user’s address
+    //if a contract calls → it’s that contract’s address
+    //It is automatically provided by Ethereum in every transaction.
+
+    function getMyAddress() public view returns (address) {
+        return msg.sender;
+    }
+
+
+    /**
+     * @dev Retrieves the value for a specific address.
+     * If the value was never set, it returns the default value (0).
+     */
+    function get(address _address) public view returns (uint256){
+        // `view` will make contract more gas efficient, declaring that we are just getting the data, not modification
+        return myMap[_address];
+    }
+
+    /**
+     * @dev Updates or sets the value for a specific address.
+     */
+    function set(address _address, uint256 _newVal) public {
+        myMap[_address]=_newVal;
+    }
+
+    /**
+     * @dev Resets the value back to the default (0).
+     */
+    function reset(address _address) public{
+        delete myMap[_address];
+    }
+
+}
+```
 
 ### What is a Mapping?
 
@@ -1164,9 +1223,19 @@ contract AdvancedCalculator is BasicCalculator {
 - Clothes on hanger = Value (different shirts)
 
 **Real Examples:**
-- Student ID → Name
-- Address → Balance
-- Wallet Address → Tweet
+Student IDS
+```
+101 -> Bali
+102 -> Bhaskar
+103 -> Bhati
+```
+
+Actual Useage
+```
+0x977..5D -> Bali
+0x777..6E -> Bhaskar
+0x967..5A -> Bhati
+```
 
 **Key Points:**
 - Key-value pairs
@@ -1186,6 +1255,56 @@ mapping(address => string) public tweets;
 - `public`: Visibility
 - `tweets`: Variable name
 
+### Mapping Example
+
+```Solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.10;
+
+contract Mapping {
+    // Mapping from address to uint
+    // Think of this like a dictionary: myMap[address] = uint
+    mapping(address => uint) public myMap;
+
+    /**
+     * @dev Retrieves the value for a specific address.
+     * If the value was never set, it returns the default value (0).
+     */
+    function get(address _addr) public view returns (uint) {
+        return myMap[_addr];
+    }
+
+    /**
+     * @dev Updates or sets the value for a specific address.
+     */
+    function set(address _addr, uint _i) public {
+        myMap[_addr] = _i;
+    }
+
+    /**
+     * @dev Resets the value back to the default (0).
+     */
+    function remove(address _addr) public {
+        delete myMap[_addr];
+    }
+}
+```
+
+- snapshots
+  - ![alt text](image-32.png)
+  - ![alt text](image-33.png)
+  - ![alt text](image-34.png)
+
+## Twitter Smart Contract - Basic Version
+
+- [6_Twitter_Basic.sol](Solidity_Contracts/contracts/6_Twitter_Basic.sol)
+
+### Requirements
+1. Create Twitter contract
+2. Create mapping between user(gen. wallet's address) and tweet
+3. Create function to create tweet
+4. Create function to get tweet
+
 ### Complete Basic Twitter Contract
 
 ```solidity
@@ -1200,6 +1319,7 @@ contract Twitter {
     }
     
     function getTweet(address _owner) public view returns (string memory) {
+        // `view` will make contract more gas efficient, declaring that we are just getting the data, not modification
         return tweets[_owner];
     }
 }
