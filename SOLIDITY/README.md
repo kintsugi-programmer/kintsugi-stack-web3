@@ -27,6 +27,7 @@
 - [4_Visibility_Modifiers_Calculator.sol](Solidity_Contracts/contracts/4_Visibility_Modifiers_Calculator.sol)
 - [5_Mapping.sol](Solidity_Contracts/contracts/5_Mapping.sol)
 - [6_Twitter_Basic.sol](Solidity_Contracts/contracts/6_Twitter_Basic.sol)
+- [7_Arrays.sol](Solidity_Contracts/contracts/7_Arrays.sol)
 
 ---
 
@@ -1390,6 +1391,33 @@ function createTweet(string memory _tweet) public {
 
 ## Arrays in Solidity
 
+- [7_Arrays.sol](Solidity_Contracts/contracts/7_Arrays.sol)
+
+```solidity
+// SPDX-License-Identifier: SEE LICENSE IN LICENSE
+pragma solidity 0.8.30;
+contract Arrays {
+    // Arrays: Collection of items of the same type
+    uint[] public numbers;// Dynamic Arrays
+    uint[2] public pair;// Fixed Size Arrays
+    uint[] public Quad = [1,2,3,4];// Initialized Arrays
+    string[] public Names = ["Bali","Biswas"];
+    // Names.push("Bhaskar"); // only variable declarations are allowed at contract scope // NO
+
+    // Sample Func. for Names
+    function PUSH_TEXT(string memory _text) public{
+        Names.push(_text);
+    }
+    function GET_LENGTH() public view returns(uint){
+        return Names.length;
+    }
+    function GET_TEXT(uint _INDEX) public view returns(string memory){
+        return Names[_INDEX];
+    }
+
+}
+```
+
 ### What Are Arrays?
 - List of things
 - Collection of items
@@ -1399,7 +1427,7 @@ function createTweet(string memory _tweet) public {
 ### Array Structure
 ```
 Index:  [0]       [1]        [2]      [3]
-Value:  ["Nas"]  ["Victoria"]  ["Dan"]  ["Harry Potter"]
+Value:  ["Bali"]  ["Bhati"]  ["Bhaskar"]  ["Biswas"]
 ```
 
 **Key Points:**
@@ -1480,6 +1508,10 @@ contract ArrayExample {
 }
 ```
 
+- snapshots
+  - ![alt text](image-36.png)
+  - ![alt text](image-37.png)
+
 ## Twitter Contract - Array of Tweets
 
 ### Problem
@@ -1498,6 +1530,7 @@ mapping(address => string[]) public tweets;
 ```
 
 ### Updated Twitter Contract
+
 
 ```solidity
 // SPDX-License-Identifier: MIT
