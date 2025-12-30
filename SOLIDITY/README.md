@@ -283,6 +283,7 @@
     - [Common Issues and Solutions](#common-issues-and-solutions)
     - [Best Practices](#best-practices)
   - [Milestone !!!](#milestone-)
+  - [Resources](#resources)
 
 ---
 
@@ -4464,6 +4465,10 @@ if (chainId !== '0xaa36a7') { // Sepolia chain ID
 - Building full-stack DApps
 - Web3.js integration
 - ReactJS frontend development
+
+## Resources
+- https://www.youtube.com/watch?v=AYpftDFiIgk
+- https://www.youtube.com/watch?v=Cbkj-Yg4k74
 
 ---
 End-of-File
